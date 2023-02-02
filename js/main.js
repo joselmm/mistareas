@@ -2,7 +2,6 @@
 	const tareasFinal=[]
 	const URLDB = JSON.parse(sessionStorage.getItem("cache")).URLBD;
 	const sheetJson =  JSON.parse(sessionStorage.getItem("cache")).sheetJson;
-alert("hoja :"+URLDB)
   var takWDates=[];
   $body = document.querySelector('.container')
    const $form = document.querySelector('#form-add-tak');
