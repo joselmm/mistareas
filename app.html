@@ -29,7 +29,7 @@
 
 <script type="text/javascript">
 	const tareasFinal=[]
-	const URLDB = 'https://script.google.com/macros/s/AKfycbz-uyUyauD3-pA11v_kNTlZkDPgcMqtnOLokGmwoXvP6QbcT4ATZh8saNz9XRKQzsKo/exec';
+	const URLDB = JSON.parse(sessionStorage.getItem("cache")).URLDB;;
   var takWDates=[];
   $body = document.querySelector('.container')
    const $form = document.querySelector('#form-add-tak');
@@ -38,7 +38,7 @@ let $fechaLimite ;
  loadTaks =  async function () {
      var jsData;
      var tareas=[]
-     var fetchData= await fetch("https://docs.google.com/spreadsheets/d/1vjjQn9RyxGS4nUgT3OOORWo_Kx1o-Bq8mSxV3ODoP2Q/gviz/tq").then((res)=>{
+     var fetchData= await fetch(JSON.parse(sessionStorage.getItem("cache")).sheetJson).then((res)=>{
          return res.text()
      }).then((txt)=>{
          var jsonData = txt.substr(txt.indexOf("(")+1).slice(0,-2);
