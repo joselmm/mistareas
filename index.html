@@ -71,7 +71,7 @@
 
 <script type="text/javascript">
 
-  if (sessionStorage.length===0){
+  if (sessionStorage.length===0 || !sessionStorage.getItem("platform").includes("joselmm.github.io/mistareas")){
 	   var form=document.getElementById("login");
 	  form.hidden=false;
 var aviso = document.getElementById("aviso");	 
@@ -105,6 +105,7 @@ var aviso = document.getElementById("aviso");
        		console.log(json)
   	if(json.res==='ok'){
  	sessionStorage.setItem("cache", JSON.stringify(json));
+ 	sessionStorage.setItem("platform", "joselmm.github.io/mistareas");
   	}
 	if(json.res==='no'){
  		aviso.hidden=false;
@@ -123,7 +124,7 @@ var aviso = document.getElementById("aviso");
 
   }
 
-  if(sessionStorage.length){
+  if(sessionStorage.length && sessionStorage.getItem("platform").includes("joselmm.github.io/mistareas")){
       $("#body").load("./app-body.html");
   }
 </script>
