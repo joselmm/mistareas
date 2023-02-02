@@ -405,3 +405,4 @@ $('#limite-h').toggle()
  	})
 }
 
+loadTaks();
