@@ -1,6 +1,7 @@
 
 	const tareasFinal=[]
-	const URLDB = JSON.parse(sessionStorage.getItem("cache")).URLDB;
+	const URLDB = JSON.parse(sessionStorage.getItem("cache")).URLBD;
+	const sheetJson =  JSON.parse(sessionStorage.getItem("cache")).sheetJson;
 alert("hoja :"+URLDB)
   var takWDates=[];
   $body = document.querySelector('.container')
@@ -10,7 +11,7 @@ let $fechaLimite ;
  loadTaks =  async function () {
      var jsData;
      var tareas=[]
-     var fetchData= await fetch(JSON.parse(sessionStorage.getItem("cache")).sheetJson).then((res)=>{
+     var fetchData= await fetch(sheetJson).sheetJson).then((res)=>{
          return res.text()
      }).then((txt)=>{
          var jsonData = txt.substr(txt.indexOf("(")+1).slice(0,-2);
