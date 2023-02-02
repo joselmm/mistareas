@@ -11,7 +11,7 @@ let $fechaLimite ;
  loadTaks =  async function () {
      var jsData;
      var tareas=[]
-     var fetchData= await fetch(sheetJson).sheetJson).then((res)=>{
+     var fetchData= await fetch(sheetJson).then((res)=>{
          return res.text()
      }).then((txt)=>{
          var jsonData = txt.substr(txt.indexOf("(")+1).slice(0,-2);
