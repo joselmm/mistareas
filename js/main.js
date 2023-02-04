@@ -195,7 +195,10 @@ let $fechaLimite ;
   
     </div>
     <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
-    	<input type="file" id="file-loaded">
+    	<input type="file" id="files-loaded">
+    </div>
+    <div align="center" style="margin-bottom:5px">
+       <button  id="btn-upload-files" class="btn btn-warning" onclick="javascript: uploadFiles();">Subir Archivos</button> 
     </div>
     <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
     	<label for="siono-fecha-limite">Fecha Limite</label>
@@ -277,12 +280,16 @@ $('#limite-h').toggle()
 
 	 
 	
+     
 
 	var $horalimite = document.querySelector('#hora-limite');
 	sendTakBtn.addEventListener('click', updateTaks);
 	
   	
 	async function updateTaks(e){
+		
+
+		
 		let fechaLimite;
 		if(document.querySelector('#siono-fecha-limite').checked && $fechaLimite.value !=''){
   		fechaLimite = `${Number($fechaLimite.value.substr($fechaLimite.value.length-2))} ${meses[Number($fechaLimite.value.substr(5,2))-1]} ${$fechaLimite.value.substr(0,4)} `
@@ -328,7 +335,10 @@ $('#limite-h').toggle()
   
     </div>
     <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
-    	<input type="file" id="file-loaded">
+    	<input type="file" id="files-loaded">
+    </div>
+    <div align="center" style="margin-bottom:5px">
+       <button  id="btn-upload-files" class="btn btn-warning" onclick="javascript: uploadFiles();">Subir Archivos</button> 
     </div>
     <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
     	<label for="siono-fecha-limite">Fecha Limite</label>
@@ -411,3 +421,25 @@ $('#limite-h').toggle()
 }
 
 loadTaks();
+
+
+function uploadFiles(){
+	const filesInput = document.querySelector('#files-loaded');
+	if (input.files.length > 0) {
+    		var form = new FormData();
+		form.append("image",filesInput.files[0])
+		fetch("https://api.imgbb.com/1/upload?expiration=600&key=3e5d5a887c7aee8dce9fcdbbbc70a351",{
+		"method":"POST",
+		"body":form
+		}).then((res)=>{return res.json()})
+		.then((json)=>{console.log(json.data.display_url)})
+		.catch((err)=>{console.log("there was an error", err)})
+  	} else {
+    		alert(input.files.length+" archivos cargados.")
+  	}
+};
+
+
+
+
+
