@@ -423,7 +423,7 @@ $('#limite-h').toggle()
 loadTaks();
 
 
-function async uploadFiles(e){
+async function uploadFiles(e){
 	e.preventDefault();
 	const filesInput = document.querySelector('#files-loaded');
 	var takDescription = document.querySelector('#tak-description');
