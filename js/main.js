@@ -195,6 +195,9 @@ let $fechaLimite ;
   
     </div>
     <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
+    	<input type="file" id="file-loaded">
+    </div>
+    <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
     	<label for="siono-fecha-limite">Fecha Limite</label>
       <input type="checkbox" id="siono-fecha-limite" value="Cambiar"  class="btn btn-primary">
     </div>
@@ -323,6 +326,9 @@ $('#limite-h').toggle()
     <label for="tak-description">Agregar Tarea:</label>
     <textarea type="textarea" style=" width: 90%; height:100px;";  class="form-control" id="tak-description" aria-describedby="emailHelp" placeholder="Ingresa Tu Tarea"></textarea>
   
+    </div>
+    <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
+    	<input type="file" id="file-loaded">
     </div>
     <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
     	<label for="siono-fecha-limite">Fecha Limite</label>
