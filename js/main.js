@@ -195,7 +195,7 @@ let $fechaLimite ;
   
     </div>
     <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
-    	<input type="file" id="files-loaded">
+    	<input type="file" id="files-loaded" multiple>
     </div>
     <div align="center" style="margin-bottom:5px">
        <button  id="btn-upload-files" class="btn btn-warning" onclick="javascript: uploadFiles(event);">Subir Archivos</button> 
@@ -335,7 +335,7 @@ $('#limite-h').toggle()
   
     </div>
     <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
-    	<input type="file" id="files-loaded">
+    	<input type="file" id="files-loaded" multiple>
     </div>
     <div align="center" style="margin-bottom:5px">
        <button  id="btn-upload-files" class="btn btn-warning" onclick="javascript: uploadFiles(event);">Subir Archivos</button> 
