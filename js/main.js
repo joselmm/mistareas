@@ -426,14 +426,18 @@ loadTaks();
 function uploadFiles(e){
 	e.preventDefault();
 	const filesInput = document.querySelector('#files-loaded');
+	var takDescription = document.querySelector('#tak-description');
 	if (filesInput.files.length > 0) {
     		var form = new FormData();
 		form.append("image",filesInput.files[0])
-		fetch("https://api.imgbb.com/1/upload?expiration=600&key=3e5d5a887c7aee8dce9fcdbbbc70a351",{
+		fetch("https://api.imgbb.com/1/upload?key=3e5d5a887c7aee8dce9fcdbbbc70a351",{
 		"method":"POST",
 		"body":form
 		}).then((res)=>{return res.json()})
-		.then((json)=>{console.log(json.data.display_url)})
+		.then((json)=>{
+			//
+			takDescription.value=takDescription.value+"\n"+json.data.display_url
+		})
 		.catch((err)=>{console.log("there was an error", err)})
   	} else {
     		alert(filesInput.files.length+" archivos cargados.")
