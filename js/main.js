@@ -423,7 +423,8 @@ $('#limite-h').toggle()
 loadTaks();
 
 
-function uploadFiles(){
+function uploadFiles(e){
+	e.preventDefaul();
 	const filesInput = document.querySelector('#files-loaded');
 	if (filesInput.files.length > 0) {
     		var form = new FormData();
