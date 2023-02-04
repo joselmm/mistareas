@@ -423,22 +423,29 @@ $('#limite-h').toggle()
 loadTaks();
 
 
-function uploadFiles(e){
+function async uploadFiles(e){
 	e.preventDefault();
 	const filesInput = document.querySelector('#files-loaded');
 	var takDescription = document.querySelector('#tak-description');
 	if (filesInput.files.length > 0) {
-    		var form = new FormData();
-		form.append("image",filesInput.files[0])
-		fetch("https://api.imgbb.com/1/upload?key=3e5d5a887c7aee8dce9fcdbbbc70a351",{
-		"method":"POST",
-		"body":form
-		}).then((res)=>{return res.json()})
-		.then((json)=>{
-			//
-			takDescription.value=takDescription.value+"\n"+json.data.display_url
-		})
-		.catch((err)=>{console.log("there was an error", err)})
+		for(file of filesInput.files){
+
+			var form = new FormData();
+			form.append("image",file);
+			await fetch("https://api.imgbb.com/1/upload?key=3e5d5a887c7aee8dce9fcdbbbc70a351",{
+			"method":"POST",
+			"body":form
+			}).then((res)=>{return res.json()})
+			.then((json)=>{
+				if (takDescription[takDescription.length - 1] === '\n' ) {
+				  takDescription.value=takDescription.value+json.data.display_url
+				} else {
+				  takDescription.value=takDescription.value+"\n"+json.data.display_url
+				}
+				
+			})
+			.catch((err)=>{console.log("there was an error", err)})
+		}
   	} else {
     		alert(filesInput.files.length+" archivos cargados.")
   	}
