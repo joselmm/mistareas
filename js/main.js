@@ -425,7 +425,7 @@ loadTaks();
 
 function uploadFiles(){
 	const filesInput = document.querySelector('#files-loaded');
-	if (input.files.length > 0) {
+	if (filesInput.files.length > 0) {
     		var form = new FormData();
 		form.append("image",filesInput.files[0])
 		fetch("https://api.imgbb.com/1/upload?expiration=600&key=3e5d5a887c7aee8dce9fcdbbbc70a351",{
