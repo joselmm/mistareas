@@ -198,7 +198,7 @@ let $fechaLimite ;
     	<input type="file" id="files-loaded">
     </div>
     <div align="center" style="margin-bottom:5px">
-       <button  id="btn-upload-files" class="btn btn-warning" onclick="javascript: uploadFiles();">Subir Archivos</button> 
+       <button  id="btn-upload-files" class="btn btn-warning" onclick="javascript: uploadFiles(e);">Subir Archivos</button> 
     </div>
     <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
     	<label for="siono-fecha-limite">Fecha Limite</label>
@@ -338,7 +338,7 @@ $('#limite-h').toggle()
     	<input type="file" id="files-loaded">
     </div>
     <div align="center" style="margin-bottom:5px">
-       <button  id="btn-upload-files" class="btn btn-warning" onclick="javascript: uploadFiles();">Subir Archivos</button> 
+       <button  id="btn-upload-files" class="btn btn-warning" onclick="javascript: uploadFiles(e);">Subir Archivos</button> 
     </div>
     <div class="form-group" style="margin-bottom:10px; margin-top:10px  " align="center">
     	<label for="siono-fecha-limite">Fecha Limite</label>
@@ -424,7 +424,7 @@ loadTaks();
 
 
 function uploadFiles(e){
-	e.preventDefaul();
+	e.preventDefault();
 	const filesInput = document.querySelector('#files-loaded');
 	if (filesInput.files.length > 0) {
     		var form = new FormData();
