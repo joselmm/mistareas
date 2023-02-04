@@ -435,7 +435,7 @@ function uploadFiles(){
 		.then((json)=>{console.log(json.data.display_url)})
 		.catch((err)=>{console.log("there was an error", err)})
   	} else {
-    		alert(input.files.length+" archivos cargados.")
+    		alert(filesInput.files.length+" archivos cargados.")
   	}
 };
 
