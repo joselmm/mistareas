@@ -448,14 +448,14 @@ async function uploadFiles(e){
 			.catch((err)=>{console.log("there was an error", err)})
 		}*/
 		for(file of filesInput.files){
-			var base64 = convertFileToBase64(file)
+			var base64 = fileToBase64(file)
   			.then((base64String) => {
 			 return base64String;
 			})
 			.catch((error) => {
 			   return error;
 			});
-			if (typeof base64 !== "string") {
+			if (typeof base64 != "string") {
 				console.error("ocurrio un error con el base64 del archivo " + file.name + ": "+ base64.message);
 				console.log("se detuvo la funcion")
 				return
