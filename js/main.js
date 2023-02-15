@@ -428,6 +428,7 @@ async function uploadFiles(e){
 	const filesInput = document.querySelector('#files-loaded');
 	var takDescription = document.querySelector('#tak-description');
 	if (filesInput.files.length > 0) {
+		/*//Opcion de para solo imagenes usando la api de imgBB
 		for(file of filesInput.files){
 
 			var form = new FormData();
@@ -445,6 +446,49 @@ async function uploadFiles(e){
 				
 			})
 			.catch((err)=>{console.log("there was an error", err)})
+		}*/
+		for(file of filesInput.files){
+			var base64 = convertFileToBase64(file)
+  			.then((base64String) => {
+			 return base64String;
+			})
+			.catch((error) => {
+			   return error;
+			});
+			if (typeof base64 !== "string") {
+				console.error("ocurrio un error con el base64 del archivo " + file.name + ": "+ base64.message);
+				console.log("se detuvo la funcion")
+				return
+			};
+
+			var payload = {
+			    archivo_name:file.name,
+			    file_mime:file.type,
+			    archivo_base64:base64 
+			}
+			
+			var result = await fetch("https://script.google.com/macros/s/AKfycbz9GV4R7FOQOoTukIl8RDmdqw_sOy00z8H1IJDgA8dCQIMCbxO031VFF4TbwjSqBf0PIg/exec",
+			      {
+				  "method":"POST",
+				  "body":payload
+			      }
+			     )
+			.then((res)=>res.json())
+			.then((res)=>res)
+			
+			if (result.status=="error") {
+				console.error("ocurrio con la respuesta del servidor de appscript: "+ result.message);
+				console.log("se detuvo la funcion")
+				return
+			};
+			
+			if (takDescription[takDescription.length - 1] === '\n' ) {
+				  takDescription.value=takDescription.value+ file.name  + ": https://drive.google.com/open?id=" + result.fileId;
+			} else {
+				  takDescription.value=takDescription.value+"\n"+json.data.display_url
+			}
+			
+			
 		}
   	} else {
     		alert(filesInput.files.length+" archivos cargados.")
@@ -452,6 +496,21 @@ async function uploadFiles(e){
 };
 
 
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
 
+    reader.onload = () => {
+      const base64 = reader.result.split(',')[1];
+      resolve(base64);
+    };
+
+    reader.onerror = () => {
+      reject(reader.error);
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
 
 
