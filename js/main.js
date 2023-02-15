@@ -455,7 +455,7 @@ async function uploadFiles(e){
 			.catch((error) => {
 			   return error;
 			});
-			if (typeof base64 != "string") {
+			if (!(typeof base64 == "string")) {
 				console.error("ocurrio un error con el base64 del archivo " + file.name + ": "+ base64.message);
 				console.log("se detuvo la funcion")
 				return
