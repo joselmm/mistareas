@@ -456,7 +456,7 @@ async function uploadFiles(e){
 			   return error;
 			});
 			if (!(typeof base64 == "string")) {
-				console.error("ocurrio un error con el base64 del archivo " + file.name + ": "+ base64.message);
+				console.error("ocurrio un error con el base64 del archivo " + file.name + ": "+ base64);
 				console.log("se detuvo la funcion")
 				return
 			};
@@ -470,22 +470,23 @@ async function uploadFiles(e){
 			var result = await fetch("https://script.google.com/macros/s/AKfycbz9GV4R7FOQOoTukIl8RDmdqw_sOy00z8H1IJDgA8dCQIMCbxO031VFF4TbwjSqBf0PIg/exec",
 			      {
 				  "method":"POST",
-				  "body":payload
+				  "body":JSON.stringify(payload)
 			      }
 			     )
 			.then((res)=>res.json())
 			.then((res)=>res)
 			
 			if (result.status=="error") {
-				console.error("ocurrio con la respuesta del servidor de appscript: "+ result.message);
+				console.error("ocurrio con la respuesta del servidor de appscript: ");
+				console.log(result);
 				console.log("se detuvo la funcion")
 				return
 			};
 			
 			if (takDescription[takDescription.length - 1] === '\n' ) {
-				  takDescription.value=takDescription.value+ file.name  + ": https://drive.google.com/open?id=" + result.fileId;
+				  takDescription.value=takDescription.value+"\""+ file.name +"\"" + ": https://drive.google.com/open?id=" + result.fileId;
 			} else {
-				  takDescription.value=takDescription.value+"\n"+json.data.display_url
+				  takDescription.value=takDescription.value+"\n"+"\""+  file.name +"\""+  ": https://drive.google.com/open?id=" + result.fileId;
 			}
 			
 			
