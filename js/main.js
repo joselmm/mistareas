@@ -448,7 +448,7 @@ async function uploadFiles(e){
 			.catch((err)=>{console.log("there was an error", err)})
 		}*/
 		for(file of filesInput.files){
-			var base64 = fileToBase64(file)
+			var base64 = await fileToBase64(file)
   			.then((base64String) => {
 			 return base64String;
 			})
