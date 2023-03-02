@@ -188,7 +188,7 @@ let $fechaLimite ;
   function updateTak (e) {
   
   	$form.innerHTML = 
-    ` <div class="form-group" align="center">
+    `<div class="form-group" align="center">
     <div style="position:absolute; right:20px; cursor:pointer" onclick="closeWindowADDTak()">X</div>
     <label for="tak-description">Actualizar Tarea:</label>
     <textarea type="textarea" style=" width: 90%; height:100px;";  class="form-control" id="tak-description" aria-describedby="emailHelp" placeholder="Ingresa Tu Tarea"></textarea>
@@ -227,7 +227,7 @@ let $fechaLimite ;
 	$('#siono-fecha-limite')[0].checked=false
 
     $takDescription=$form.getElementsByTagName('textarea')[0];
-    $takDescription.value=e.target.innerHTML.replace(/<br>/g,'\n')
+    $takDescription.value=e.target.innerText;
     $takDescription.focus()
     const sendTakBtn = document.querySelector('#send-tak-btn');
 	$fechaLimite= document.getElementById('fecha-limite');
