@@ -181,10 +181,7 @@ let $fechaLimite ;
     }
  
 	 
-	 //arreglo del ancho de las tareas
-document.querySelectorAll("td.taks-list").forEach((ele)=>ele.style.cssText=`   
-    overflow-wrap: break-word;
-}`)
+
   }
 
 
