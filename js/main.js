@@ -515,3 +515,8 @@ function fileToBase64(file) {
 }
 
 
+//arreglo del ancho de las tareas
+document.querySelectorAll("td.taks-list").forEach((ele)=>ele.style.cssText=`    width: 75vw!important;
+    display: block;
+    overflow-wrap: break-word;
+}`)
