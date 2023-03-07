@@ -180,7 +180,14 @@ let $fechaLimite ;
         document.getElementById(id).scrollIntoView()
     }
  
+	 
+	 //arreglo del ancho de las tareas
+document.querySelectorAll("td.taks-list").forEach((ele)=>ele.style.cssText=`   
+    overflow-wrap: break-word;
+}`)
   }
+
+
   document.addEventListener('DOMContentLoaded',loadTaks);
 
   const $botonAddTak = document.querySelector('#add-tak');
@@ -515,8 +522,4 @@ function fileToBase64(file) {
 }
 
 
-//arreglo del ancho de las tareas
-document.querySelectorAll("td.taks-list").forEach((ele)=>ele.style.cssText=`    width: 75vw!important;
-    display: block;
-    overflow-wrap: break-word;
-}`)
+
